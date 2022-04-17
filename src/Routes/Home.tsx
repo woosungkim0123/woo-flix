@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useQuery } from "react-query";
 import { PathMatch, useMatch, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { getMovies, IGetMovieResult } from "../api";
+import { getMovies, IGetMovieResult, IMoive } from "../api";
 import useWindowDimensions from "../Components/useWidowDimensions";
 import { makeImagePath } from "../utils";
 
@@ -34,9 +34,37 @@ const Overview = styled.p`
   font-size: 30px;
   width: 50%;
 `
+const SliderName = styled.p`
+  margin-bottom: 5px;
+  font-size: 20px;
+  font-weight: bold;
+  margin-right: 10px;
+`
 const Slider = styled.div`
   position: relative;
   top: -100px;
+`
+const Slider1 = styled.div`
+  position: relative;
+  top: 130px;
+`
+const Slider2 = styled.div`
+  position: relative;
+  top: 360px;
+`
+const Slider3 = styled.div`
+  position: relative;
+  top: 590px;
+`
+const SliderWrap = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+`
+const SliderButton = styled.div`
+  font-size: 20px;
+  cursor: pointer;
+  font-weight: bold;
 `
 
 const Row = styled(motion.div)`
@@ -128,6 +156,7 @@ const BoxVariants = {
   hover: {
     scale: 1.3,
     y: -50,
+    zIndex:99,
     transition: {
       delay: 0.3,
       type:"twin",
@@ -143,25 +172,30 @@ const infoVariant = {
     },
   }
 }
+
+
+
 function Home() {
   const navigate = useNavigate()
-  const { data, isLoading } = useQuery<IGetMovieResult>(["movies", "nowPlaying"], getMovies);
+  const { data, isLoading } = useQuery<IGetMovieResult>(["movies", "nowPlaying"], ()=>(getMovies("now_playing")));
+  const { data: data1 }  = useQuery<IGetMovieResult>(["movies", "popular"], ()=>(getMovies("popular")));
   const moviePathMatch: PathMatch<string> | null = useMatch("/movies/:id");
   const [index, setIndex] = useState(0)
   const width = useWindowDimensions();
   const { scrollY } = useViewportScroll();
   const [leaving, setLeaving] = useState(false)
   const clickMovie = moviePathMatch?.params.id && data?.results.find((movie) => String(movie.id) === moviePathMatch.params.id)
-  console.log(clickMovie)
+  
   const increaseIndex = () => {
     if(data) {
       if(leaving) return;
       toggleLeaving();
       const totalMovie = data?.results.length - 1;
       const maxIndex = Math.floor(totalMovie / offset) - 1;
-      setIndex((prev) => prev === maxIndex ? 0 : prev + 1);
+      setIndex((prev) => prev === 0 ? maxIndex : prev - 1);
     }
   }
+
   const toggleLeaving = () => setLeaving((prev) => !prev);
   const onBoxClicked = (movieId: number) => {
     navigate(`/movies/${movieId}`)
@@ -176,13 +210,20 @@ function Home() {
             <Loader>Loading</Loader> 
           ) : ( 
             <>
-              <Banner onClick={increaseIndex} bgPhoto={makeImagePath(data?.results[0].backdrop_path || "")}>
+              <Banner  bgPhoto={makeImagePath(data?.results[0].backdrop_path || "")}>
                 <Title>{data?.results[0].title}</Title>
                 <Overview>{data?.results[0].overview}</Overview>
               </Banner>
+             
               <Slider>
+                <SliderWrap>
+                  <SliderName>Now Playing</SliderName>
+                  <SliderButton onClick={increaseIndex}>⏩</SliderButton>
+              
+                </SliderWrap>              
                 <AnimatePresence initial={false} onExitComplete={toggleLeaving}>
                   <Row initial={{x: width + 10}} animate={{x: 0}} exit={{x: -width -10}} key={index} transition={{type:"tween", duration:1}}>
+                    
                     {data?.results.slice(1).slice(offset*index, offset*index + offset).map((movie) => (
                       <Box 
                         layoutId={movie.id + ""}
@@ -199,9 +240,101 @@ function Home() {
                         </Info>
                       </Box>
                     ))}
+                     
                   </Row>
+                  
                 </AnimatePresence>
               </Slider>
+              <Slider1>
+                <SliderWrap>
+                  <SliderName>Popular</SliderName>
+                  <SliderButton onClick={increaseIndex}>⏩</SliderButton>
+              
+                </SliderWrap>              
+                <AnimatePresence initial={false} onExitComplete={toggleLeaving}>
+                  <Row initial={{x: width + 10}} animate={{x: 0}} exit={{x: -width -10}} key={index} transition={{type:"tween", duration:1}}>
+                    
+                    {data1?.results.slice(1).slice(offset*index, offset*index + offset).map((movie) => (
+                      <Box 
+                        layoutId={movie.id + ""}
+                        key={movie.id}
+                        initial="normal"
+                        whileHover="hover"
+                        onClick={() => onBoxClicked(movie.id)}
+                        transition={{type: "twin"}}
+                        variants={BoxVariants}
+                        bgPhoto={makeImagePath(movie.backdrop_path, "w500")} 
+                      >
+                        <Info variants={infoVariant}>
+                          <h4>{movie.title}</h4>
+                        </Info>
+                      </Box>
+                    ))}
+                     
+                  </Row>
+                  
+                </AnimatePresence>
+              </Slider1>
+              <Slider2>
+                <SliderWrap>
+                  <SliderName>Now Playing</SliderName>
+                  <SliderButton onClick={increaseIndex}>⏩</SliderButton>
+              
+                </SliderWrap>              
+                <AnimatePresence initial={false} onExitComplete={toggleLeaving}>
+                  <Row initial={{x: width + 10}} animate={{x: 0}} exit={{x: -width -10}} key={index} transition={{type:"tween", duration:1}}>
+                    
+                    {data?.results.slice(1).slice(offset*index, offset*index + offset).map((movie) => (
+                      <Box 
+                        layoutId={movie.id + ""}
+                        key={movie.id}
+                        initial="normal"
+                        whileHover="hover"
+                        onClick={() => onBoxClicked(movie.id)}
+                        transition={{type: "twin"}}
+                        variants={BoxVariants}
+                        bgPhoto={makeImagePath(movie.backdrop_path, "w500")} 
+                      >
+                        <Info variants={infoVariant}>
+                          <h4>{movie.title}</h4>
+                        </Info>
+                      </Box>
+                    ))}
+                     
+                  </Row>
+                  
+                </AnimatePresence>
+              </Slider2>
+              <Slider3>
+                <SliderWrap>
+                  <SliderName>Now Playing</SliderName>
+                  <SliderButton onClick={increaseIndex}>⏩</SliderButton>
+              
+                </SliderWrap>              
+                <AnimatePresence initial={false} onExitComplete={toggleLeaving}>
+                  <Row initial={{x: width + 10}} animate={{x: 0}} exit={{x: -width -10}} key={index} transition={{type:"tween", duration:1}}>
+                    
+                    {data?.results.slice(1).slice(offset*index, offset*index + offset).map((movie) => (
+                      <Box 
+                        layoutId={movie.id + ""}
+                        key={movie.id}
+                        initial="normal"
+                        whileHover="hover"
+                        onClick={() => onBoxClicked(movie.id)}
+                        transition={{type: "twin"}}
+                        variants={BoxVariants}
+                        bgPhoto={makeImagePath(movie.backdrop_path, "w500")} 
+                      >
+                        <Info variants={infoVariant}>
+                          <h4>{movie.title}</h4>
+                        </Info>
+                      </Box>
+                    ))}
+                     
+                  </Row>
+                  
+                </AnimatePresence>
+              </Slider3>
               <AnimatePresence>
                 {
                   moviePathMatch 
