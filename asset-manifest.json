@@ -1,13 +1,10 @@
 {
   "files": {
-    "main.css": "/wooFlex/static/css/main.4caa3411.css",
-    "main.js": "/wooFlex/static/js/main.b0ba96fe.js",
+    "main.js": "/wooFlex/static/js/main.459eef66.js",
     "index.html": "/wooFlex/index.html",
-    "main.4caa3411.css.map": "/wooFlex/static/css/main.4caa3411.css.map",
-    "main.b0ba96fe.js.map": "/wooFlex/static/js/main.b0ba96fe.js.map"
+    "main.459eef66.js.map": "/wooFlex/static/js/main.459eef66.js.map"
   },
   "entrypoints": [
-    "static/css/main.4caa3411.css",
-    "static/js/main.b0ba96fe.js"
+    "static/js/main.459eef66.js"
   ]
 }
