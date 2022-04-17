@@ -9,10 +9,6 @@ import {
 import MovieSlider from "../Components/MovieSlider";
 import { makeImgPath } from "../imgPath";
 
-
-
-const Container = styled.main``;
-
 const Banner = styled.section<{ bgPhoto: string }>`
   display: flex;
   align-items: flex-end;
@@ -30,21 +26,16 @@ const Banner = styled.section<{ bgPhoto: string }>`
 const BannerBox = styled.div`
   margin-bottom: 120px;
   h1 {
-    font-size: 2.8vw;
+    font-size: 50px;
     font-weight: 700;
     line-height: 1.5;
     padding-bottom: 20px;
   }
-  h2 {
-    font-size: 1.5vw;
-    font-weight: 600;
-    padding-bottom: 20px;
-  }
+
   h3 {
-    font-size: 1vw;
+    font-size: 18px;
     font-weight: 500;
-    width: 80%;
-    max-width: 1400px;
+    width: 70%;
     line-height: 1.4;
   }
 `;
@@ -78,21 +69,20 @@ function Home() {
   const { isLoading: latestMovieLoading, data: latestMovie } =
     useQuery<iMovieData>("upcomingMovie", fetchLatestMovie);
   return (
-    <Container>
+    <>
       <Banner
         bgPhoto={makeImgPath(nowPlayingData?.results[0].backdrop_path || "")}
       >
-        {nowPlayingLoading ? (
-          <BannerBox>
-            <h1>불러오는 중...</h1>
-          </BannerBox>
-        ) : (
-          <BannerBox>
-            <h1>{nowPlayingData?.results[0].title}</h1>
-            <h2>오늘 영화 순위 1위</h2>
-            <h3>{nowPlayingData?.results[0].overview}</h3>
-          </BannerBox>
-        )}
+        <BannerBox>
+          {nowPlayingLoading ? (
+            <h1>Loading...</h1>
+          ) : (
+            <>
+              <h1>{nowPlayingData?.results[0].title}</h1>
+              <h3>{nowPlayingData?.results[0].overview}</h3>
+            </>
+          )}  
+        </BannerBox>
       </Banner>
       <MovieSlider
         loading={nowPlayingLoading}
@@ -114,7 +104,7 @@ function Home() {
         data={upcomingMovie}
         title="Upcoming"
       />
-    </Container>
+    </>
   );
 }
 

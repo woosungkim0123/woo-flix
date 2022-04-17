@@ -1,4 +1,4 @@
-import { Routes, Route, BrowserRouter } from "react-router-dom";
+import { Routes, Route, BrowserRouter as Routers } from "react-router-dom";
 import Header from "./Components/Header";
 import Home from "./Routes/Home";
 import Search from "./Routes/Search";
@@ -6,7 +6,7 @@ import Tv from "./Routes/Tv";
 
 function Router() {
   return (
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
+    <Routers basename={process.env.PUBLIC_URL}>
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -17,7 +17,7 @@ function Router() {
         <Route path="/search/:keyword/movie/:movieId" element={<Search />} />
         <Route path="/search/:keyword/tv/:tvId" element={<Search />} />
       </Routes>
-    </BrowserRouter>
+    </Routers>
   );
 }
 
