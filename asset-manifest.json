@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/wooFlex/static/js/main.cdf0fd46.js",
+    "main.js": "/wooFlex/static/js/main.132c7f45.js",
     "index.html": "/wooFlex/index.html",
-    "main.cdf0fd46.js.map": "/wooFlex/static/js/main.cdf0fd46.js.map"
+    "main.132c7f45.js.map": "/wooFlex/static/js/main.132c7f45.js.map"
   },
   "entrypoints": [
-    "static/js/main.cdf0fd46.js"
+    "static/js/main.132c7f45.js"
   ]
 }
