@@ -19,9 +19,7 @@ const Banner = styled.section<{ bgPhoto: string }>`
     url(${(props) => props.bgPhoto});
   background-size: cover;
   background-position: center;
-  @media (max-width: 600px) {
-    padding: 0 18px;
-  }
+
 `;
 const BannerBox = styled.div`
   margin-bottom: 120px;

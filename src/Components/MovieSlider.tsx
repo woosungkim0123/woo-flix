@@ -17,9 +17,7 @@ export const SlideTitle = styled.h3`
   padding-left: 50px;
   padding-bottom: 1vw;
   font-weight: 500;
-  @media (max-width: 600px) {
-    padding-left: 18px;
-  }
+
 `;
 
 export const SlideContainer = styled.section`
@@ -44,9 +42,7 @@ export const SlideContainer = styled.section`
       transform: scale(120%);
       color: ${(props) => props.theme.textColor.active};
     }
-    @media (max-width: 600px) {
-      width: 18px;
-    }
+
   }
   .fa-chevron-left {
     left: 0;
@@ -62,9 +58,7 @@ export const SlideRow = styled(motion.div)`
   grid-template-columns: repeat(6, 1fr);
   gap: 0.5vw;
   padding: 0 50px;
-  @media (max-width: 600px) {
-    padding: 0 18px;
-  }
+
 `;
 export const SlideBox = styled(motion.div)<{ bgPhoto: string }>`
   height: 8vw;
