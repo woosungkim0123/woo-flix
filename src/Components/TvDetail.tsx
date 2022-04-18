@@ -1,13 +1,11 @@
 import { motion } from "framer-motion";
 import { useQuery } from "react-query";
 import { fetchTvDetail } from "../api";
-import { makeImgPath } from "../imgPath";
+import { makeImgPath } from "../util";
 import {
   Credits,
   DetailContainer,
   DetailText,
-  Genre,
-  Genres,
   NoImages,
 } from "./MovieDetail";
 
@@ -75,11 +73,6 @@ function TvDetail({ title, tvId }: detailProps) {
             <p key={item.name}>{item.name}</p>
           ))}
         </Credits>
-        <Genres>
-          {tvData?.genres.map((item) => (
-            <Genre key={item.name}>{item.name}</Genre>
-          ))}
-        </Genres>
       </DetailText>
     </DetailContainer>
   );

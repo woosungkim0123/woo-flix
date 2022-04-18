@@ -1,7 +1,7 @@
 import { AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { useMatch, useNavigate, useParams } from "react-router-dom";
-import { makeImgPath } from "../imgPath";
+import { makeImgPath } from "../util";
 import { iTvData } from "../Routes/Tv";
 import {
   Overlay,
@@ -72,8 +72,6 @@ function TvSlider({ loading, data, title }: sliderProps) {
                   <SlideBoxWrapper>
                     <SlideInfoBox variants={slideInfoBoxVariants}>
                       <h4>{item.name}</h4>
-                      <h5>{item.original_name}</h5>
-                      <p>⭐️{item.vote_average}</p>
                     </SlideInfoBox>
                   </SlideBoxWrapper>
                 </SlideBox>

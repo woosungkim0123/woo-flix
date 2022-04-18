@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useQuery } from "react-query";
 import styled from "styled-components";
 import { fetchMovieDetail } from "../api";
-import { makeImgPath } from "../imgPath";
+import { makeImgPath } from "../util";
 
 export const DetailContainer = styled(motion.div)`
   z-index: 200;
@@ -128,11 +128,6 @@ function MovieDetail({ title, movieId }: detailProps) {
             <p key={item.name}>{item.name}</p>
           ))}
         </Credits>
-        <Genres>
-          {movieData?.genres.map((item) => (
-            <Genre key={item.name}>{item.name}</Genre>
-          ))}
-        </Genres>
       </DetailText>
     </DetailContainer>
   );

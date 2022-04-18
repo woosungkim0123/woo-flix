@@ -2,7 +2,7 @@ import { AnimatePresence, motion, Variants } from "framer-motion";
 import { useState } from "react";
 import { useMatch, useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
-import { makeImgPath } from "../imgPath";
+import { makeImgPath } from "../util";
 import { iSearchResults } from "../Routes/Search";
 import MovieDetail from "./MovieDetail";
 

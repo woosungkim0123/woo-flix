@@ -2,7 +2,7 @@ import { AnimatePresence, motion, Variants } from "framer-motion";
 import { useState } from "react";
 import { useMatch, useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
-import { makeImgPath } from "../imgPath";
+import { makeImgPath } from "../util";
 import { iMovieData } from "../Routes/Home";
 import MovieDetail from "./MovieDetail";
 
@@ -185,7 +185,7 @@ function MovieSlider({ loading, data, title }: sliderProps) {
   const onOverlayClick = () => navigate(-1);
   return (
     <>
-      <SlideTitle>{loading ? "불러오는 중..." : title}</SlideTitle>
+      <SlideTitle>{loading ? "Loading..." : title}</SlideTitle>
       <SlideContainer>
         <i className="fas fa-chevron-left" onClick={decreaseIndex}></i>
         <AnimatePresence initial={false} custom={right}>
@@ -215,8 +215,6 @@ function MovieSlider({ loading, data, title }: sliderProps) {
                   <SlideBoxWrapper>
                     <SlideInfoBox variants={slideInfoBoxVariants}>
                       <h4>{item.title}</h4>
-                      <h5>{item.original_title}</h5>
-                      <p>⭐️{item.vote_average}</p>
                     </SlideInfoBox>
                   </SlideBoxWrapper>
                 </SlideBox>

@@ -1,7 +1,7 @@
 import { AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { useMatch, useNavigate, useParams } from "react-router-dom";
-import { makeImgPath } from "../imgPath";
+import { makeImgPath } from "../util";
 import { iResults } from "../Routes/Tv";
 import {
   Overlay,

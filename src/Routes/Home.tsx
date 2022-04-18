@@ -7,7 +7,7 @@ import {
   fetchUpcomingMovie,
 } from "../api";
 import MovieSlider from "../Components/MovieSlider";
-import { makeImgPath } from "../imgPath";
+import { makeImgPath } from "../util";
 
 const Banner = styled.section<{ bgPhoto: string }>`
   display: flex;

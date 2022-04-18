@@ -8,7 +8,7 @@ import {
 } from "../api";
 import TvLatestSlider from "../Components/TvLatestSlider";
 import TvSlider from "../Components/TvSlider";
-import { makeImgPath } from "../imgPath";
+import { makeImgPath } from "../util";
 
 export interface iResults {
   backdrop_path: string;
@@ -88,7 +88,7 @@ function Tv() {
         ) : (
           <BannerBox>
             <h1>{popularTvData?.results[0].name}</h1>
-            <h2>현재 인기 TV 시리즈 1위</h2>
+  
             <h3>{popularTvData?.results[0].overview}</h3>
           </BannerBox>
         )}
