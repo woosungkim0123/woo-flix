@@ -28,8 +28,6 @@ This application is a clone of the Netflix user interface. It aims to provide an
 - Styled Components
 - React Query
 
-<br>
-
 ## Installation and Running
 
 ### System Requirements
