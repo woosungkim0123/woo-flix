@@ -1,26 +1,25 @@
 # Netflix Clone Project
 
-## Live Demo
-
-Check out the live demo here: [wooFlex](https://woosungkim0123.github.io/wooFlex/)
+## Preview
 
 ![Demo](/docs/readme1.png)
 
-## Description
+## 설명
 
-This application is a clone of the Netflix user interface. It aims to provide an experience similar to Netflix by using movie and TV show data.
+영화 및 TV 쇼 데이터를 사용하여 넷플릭스와 유사한 경험을 제공하고자 만들어진 프로젝트 입니다.
 
-## Features
+## 기능
 
-- **Netflix-like UI/UX**: Replicates the unique layout and dynamic user experience of Netflix.
+- **넷플릭스 스타일 UI/UX**: 넷플릭스의 독특한 레이아웃과 동적 사용자 경험을 재현합니다.
 
-- **Dynamic Data Loading**: Loads and displays movie and TV program data in real-time.
+- **동적 데이터 로딩**: 실시간으로 영화 및 TV 프로그램 데이터를 로드하고 표시합니다.
   
-- **Responsive Design**: Incorporates a responsive web design considering various device usages.
+- **반응형 디자인**: 다양한 장치 사용을 고려한 반응형 웹 디자인을 채택합니다.
 
-- **User Interaction**: Includes interactive elements allowing users to explore and select content.
+- **사용자 상호작용**: 사용자가 콘텐츠를 탐색하고 선택할 수 있도록 인터랙티브 요소를 포함합니다.
 
-## Technology Stack
+## 기술 스택
+
 - TypeScript
 - React JS
 - Recoil
@@ -28,24 +27,22 @@ This application is a clone of the Netflix user interface. It aims to provide an
 - Styled Components
 - React Query
 
-## Installation and Running
+## 설치 및 실행
 
-### System Requirements
-
-Before installing and running the project, make sure the following software is installed on your system.
+### 실행 환경
 
 ```
 node 16.17.1
 npm 8.15.0
 ```
 
-### Installation
+### 설치
 
 ```
 npm install
 ```
 
-### Running
+### 실행
 
 ```
 npm run start
